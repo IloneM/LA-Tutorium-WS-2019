@@ -1,3 +1,6 @@
+#TODO : find a way to automatize the generation of this makefile (CMAKE ?, proper sh ?, a makefilic way ?)
+#TODO : put sh and templates in dedicated folder
+
 main = allgemeine
 
 exercises-content = $(wildcard exercises/*.tex)
@@ -11,7 +14,7 @@ homeworksout = $(patsubst %.tex,%.pdf,$(homeworksoutex))
 # You want latexmk to *always* run, because make does not have all the info.
 # Also, include non-file targets in .PHONY so they are run regardless of any
 # file of the given name existing.
-.PHONY: all clean exercises homeworks
+.PHONY: all clean clean-all exercises homeworks
 
 # The first rule in a Makefile is the one executed by default ("make"). It
 # should always be the "all" rule, so that "make" and "make all" are identical.
@@ -28,7 +31,7 @@ exercises-out/%.pdf : exercises-out/%.tex
 	latexmk -pdflua -pdflualatex="lualatex -interaction=nonstopmode" -outdir=exercises-out -use-make $<
 
 exercises.tex: $(exercises-content)
-	bash ./generate-tex-chapters.sh exercises Exercise sheet
+	bash ./generate-tex-chapters.sh exercises Exercise\ sheet
 
 ## HOMEWORKS
 
@@ -48,10 +51,14 @@ exercises: $(exercisesout)
 
 homeworks: $(homeworksout)
 
-#TODO : works even when folder does exist. Actually clean folders
 clean:
+	latexmk -c
+	if [ -d exercises-out ]; then find exercises-out/ -not -name '*.dvi' -not -name '*.pdf' -not -name '*.ps' -type f -delete; fi
+	if [ -d homeworks-out ]; then find homeworks-out/ -not -name '*.dvi' -not -name '*.pdf' -not -name '*.ps' -type f -delete; fi
+
+clean-all:
 	latexmk -CA
-	latexmk -CA homeworks/
-	latexmk -CA homeworks-out/
-	latexmk -CA exercises/
-	latexmk -CA exercises-out/
+	rm -f exercises-out/ -R
+	rm -f exercises.tex
+	rm -f homeworks-out/ -R
+	rm -f homeworks.tex
