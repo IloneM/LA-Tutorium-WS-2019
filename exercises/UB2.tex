@@ -1,0 +1,36 @@
+\section{Exercise 1}
+
+\begin{enumerate}[a)]
+ \stepcounter{enumi}
+ \item As $(-1)^2+2^2=5$, we get from the definition of $R$ that every point $(x,y)\in\RR^2$ s.t (such that) $(x,y)R(-1,2)$ satisfies the equation $x^2+y^2=5$.
+ 
+ We recognize here the cartesian equation of a circle (Kreise) of radius $\sqrt{5}$ and center $(0,0)$, which is then the equivalence class of $(-1,2)$.
+ 
+ \item As stated in question above, the equivalence class of a point $(a,b)\in\RR^2$ is the circle of radius $\sqrt{a^2+b^2}$ and center $(0,0)$.
+ 
+ A representation system has then to take exactly one point in every of those circles. A smart and simple choice could be to fix one of the coordinates to 0, let say the second one. The representation system is then the ray $\RR_{\geq 0}\times \{0\}\subset \RR^2$, the represent of the equivalence class of $(a,b)\in\RR^2$ being $(\sqrt{a^2+b^2}, 0)$.
+ 
+ \textit{See exercise 4 for a more comprehensive description of what happens}
+\end{enumerate}
+
+
+\section{Exercise 2}
+
+Let denote $\forall x,y\in\RR^2$ : $[x,y]:=\{tx+(1-t)y|t\in\RR\}$, i.e ``the line between x and y''.
+We should remark that when $x=y$, $[x,y]$ is nothing but the point $\{x\}=\{y\}$.\\
+
+Let $\Phi:\RR^2\to\RR^2$ be a linear fonction, and $a, b\in\RR^2$ s.t $a\neq b$.
+
+$\forall t\in [0,1],\, \Phi(ta+(1-t)b)=\Phi(ta)+\Phi((1-t)b)=t\Phi(a)+(1-t)\Phi(b)$ by linearity of $\Phi$, which means:
+$$
+ \Phi([a,b])=[\Phi(a),\Phi(b)]
+$$
+
+As $a\neq b$ by hypothesis, $[a,b]$ is here a true line (i.e not reduced to a point).
+
+For $\Phi([a,b])=[\Phi(a),\Phi(b)]$:
+
+\begin{itemize}
+ \item if $\Phi(a)\neq\Phi(b)$, then $[\Phi(a),\Phi(b)]$ is a true line also.
+ \item if $\Phi(a)=\Phi(b)$, then $[\Phi(a), \Phi(b)]$ is a reduced to the point $\{\Phi(a)\}=\{\Phi(b)\}$.
+\end{itemize}
