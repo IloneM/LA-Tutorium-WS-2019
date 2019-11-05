@@ -25,7 +25,7 @@ $(main).tex: exercises.tex homeworks.tex
 ## EXERCICES
 
 exercises-out/%.tex : exercises/%.tex
-	./generate-tex-individuals.sh $< $@ Solutions\ to\ exercises\ sheet
+	./generate-tex-individuals.sh $< $@ Solutions\ to\ exercises\ sheet individual-exercises-template.tex
 
 exercises-out/%.pdf : exercises-out/%.tex
 	latexmk -pdflua -pdflualatex="lualatex -interaction=nonstopmode" -outdir=exercises-out -use-make $<
@@ -36,7 +36,7 @@ exercises.tex: $(exercises-content)
 ## HOMEWORKS
 
 homeworks-out/%.tex : homeworks/%.tex
-	./generate-tex-individuals.sh $< $@ Solutions\ to\ homeworks\ sheet
+	./generate-tex-individuals.sh $< $@ Solutions\ to\ homeworks\ sheet individual-exercises-template.tex
 
 homeworks-out/%.pdf : homeworks-out/%.tex
 	latexmk -pdflua -pdflualatex="lualatex -interaction=nonstopmode" -outdir=homeworks-out -use-make $<
